@@ -1,0 +1,76 @@
+kind: ConfigMap
+apiVersion: v1
+data:
+  haproxy.cfg: |
+    global
+      log /dev/log    local0
+      log /dev/log    local1 notice
+    {{ if eq .Values.haproxy.stats.socket.enable true }}
+      stats socket /run/haproxy/admin.sock mode 660 level admin
+      stats timeout 2m # Wait up to 2 minutes for input
+    {{ end }}
+
+
+    # Specifies TCP timeout on connect for use by the frontend ft_redis
+    # Set the max time to wait for a connection attempt to a server to succeed
+    # The server and client side expected to acknowledge or send data.
+    defaults REDIS
+      mode tcp
+      timeout connect 3s
+      timeout server 6s
+      timeout client 6s
+
+    {{ if eq .Values.haproxy.stats.http.enable true }}
+    frontend http_stats
+      bind {{ .Values.haproxy.bindAddresses }}:{{ .Values.haproxy.stats.http.port }}
+      default_backend stats
+
+    backend stats
+      mode http
+      stats enable
+      stats enable
+      stats uri	 /
+      stats refresh 1s
+      stats show-legends
+    {{ end -}}
+
+    # Specifies listening socket for accepting client connections using the default
+    # REDIS TCP timeout and backend bk_redis TCP health check.
+    frontend ft_master_redis
+      bind {{ .Values.haproxy.bindAddresses }}:{{ .Values.haproxy.ports.master }} name master_redis
+      default_backend bk_master_redis
+
+    frontend ft_slave_redis
+      bind {{ .Values.haproxy.bindAddresses }}:{{ .Values.haproxy.ports.slave }} name slave_redis
+      default_backend bk_slave_redis
+
+    # Specifies the backend Redis proxy server TCP health settings
+    # Ensure it only forward incoming connections to reach a master.
+    backend bk_master_redis
+      balance first
+      option tcp-check
+      tcp-check connect
+      tcp-check send PING\r\n
+      tcp-check expect string +PONG
+      tcp-check send info\ replication\r\n
+      tcp-check expect string role:master
+      tcp-check send QUIT\r\n
+      tcp-check expect string +OK
+      {{- template "masters.list" . }}
+
+    # Ensure it only forward incoming connections to reach a slave.
+    backend bk_slave_redis
+      balance first
+      option tcp-check
+      tcp-check connect
+      tcp-check send PING\r\n
+      tcp-check expect string +PONG
+      tcp-check send info\ replication\r\n
+      tcp-check expect string role:slave
+      tcp-check send QUIT\r\n
+      tcp-check expect string +OK
+      {{- template "slaves.list" . }}
+
+metadata:
+  name: {{ template "haproxy-redis.fullname" . }}
+  namespace: {{ .Values.namespace }}

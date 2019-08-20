@@ -1,0 +1,96 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: {{ template "haproxy-redis.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    name: {{ template "haproxy-redis.fullname" . }}
+{{ include "labels.standard" . | indent 4 }}
+spec:
+  updateStrategy:
+    type: RollingUpdate
+  revisionHistoryLimit: 1
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "haproxy-redis.fullname" . }}
+  template:
+    metadata:
+      name: {{ template "haproxy-redis.fullname" . }}
+      labels:
+        app: {{ template "haproxy-redis.fullname" . }}
+        release: {{ .Release.Name }}
+        name: {{ template "haproxy-redis.fullname" . }}
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "9101"
+        prometheus.io/scrape: "true"
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      {{- if .Values.podAnnotations }}
+{{ toYaml .Values.podAnnotations . | indent 8 }}
+      {{- end }}
+    spec:
+      # Needed when using unmodified rbac-setup.yml
+      serviceAccountName: {{ template "haproxy-redis.serviceAccountName" . }}
+      nodeSelector:
+{{ toYaml .Values.haproxy.nodeSelector | indent 8 }}
+      {{- if eq .Values.haproxy.podAntiAffinity "hard" }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app: {{ template "haproxy-redis.name" . }}
+                release: {{ .Release.Name }}
+                component: server
+            topologyKey: kubernetes.io/hostname
+      {{- else if eq .Values.haproxy.podAntiAffinity "soft" }}
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: {{ template "haproxy-redis.fullname" . }}
+                  release: {{ .Release.Name }}
+                  component: server
+              topologyKey: kubernetes.io/hostname
+      {{- end }}
+      containers:
+      - name: prometheus-exporter
+        image: quay.io/prometheus/haproxy-exporter:v0.9.0
+        imagePullPolicy: {{ .Values.pullPolicy }}
+        ports:
+        - name: exporter-port
+          containerPort: 9101
+        command: ["haproxy_exporter",
+                    "--haproxy.scrape-uri=unix:/run/haproxy/admin.sock"]
+        volumeMounts:
+          - name: shared-socket
+            mountPath: /run/haproxy
+      - name: haproxy
+        image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - name: master
+          containerPort: {{ .Values.haproxy.ports.master }}
+        - name: slave
+          containerPort: {{ .Values.haproxy.ports.slave }}
+        {{ if eq .Values.haproxy.stats.http.enable true }}
+        - name: stats
+          containerPort: {{ .Values.haproxy.stats.http.port }}
+        {{ end }}
+        resources:
+{{ toYaml .Values.haproxy.resources | indent 10 }}
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/local/etc/haproxy
+        - name: shared-socket
+          mountPath: /run/haproxy
+      volumes:
+      - name: config-volume
+        configMap:
+          name: {{ template "haproxy-redis.fullname" . }}
+      - name: shared-socket
+        emptyDir: {}
