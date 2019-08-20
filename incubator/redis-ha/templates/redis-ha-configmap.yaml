@@ -72,21 +72,26 @@ data:
 
     setup_defaults() {
         echo "Setting up defaults"
-        if [ "$INDEX" = "0" ]; then
-            echo "Setting this pod as the default master"
-            redis_update "$ANNOUNCE_IP"
-            sentinel_update "$ANNOUNCE_IP"
-            sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
-        else
-            DEFAULT_MASTER="$(getent hosts "$SERVICE-announce-0" | awk '{ print $1 }')"
-            if [ -z "$DEFAULT_MASTER" ]; then
-                echo "Unable to resolve host"
-                exit 1
-            fi
-            echo "Setting default slave config.."
-            redis_update "$DEFAULT_MASTER"
-            sentinel_update "$DEFAULT_MASTER"
-        fi
+
+        redis_update "$ANNOUNCE_IP"
+        sentinel_update "$ANNOUNCE_IP"
+        sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
+
+#        if [ "$INDEX" = "0" ]; then
+#            echo "Setting this pod as the default master"
+#            redis_update "$ANNOUNCE_IP"
+#            sentinel_update "$ANNOUNCE_IP"
+#            sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
+#        else
+#            DEFAULT_MASTER="$(getent hosts "$SERVICE-announce-0" | awk '{ print $1 }')"
+#            if [ -z "$DEFAULT_MASTER" ]; then
+#                echo "Unable to resolve host"
+#                exit 1
+#            fi
+#            echo "Setting default slave config.."
+#            redis_update "$DEFAULT_MASTER"
+#            sentinel_update "$DEFAULT_MASTER"
+#        fi
     }
 
     find_master() {
@@ -118,7 +123,8 @@ data:
     echo "Initializing config.."
     copy_config
 
-    ANNOUNCE_IP=$(getent hosts "$SERVICE-announce-$INDEX" | awk '{ print $1 }')
+#    ANNOUNCE_IP=$(getent hosts "$SERVICE-announce-$INDEX" | awk '{ print $1 }')
+    ANNOUNCE_IP=$(getent hosts "$SERVICE-announce" | awk '{ print $1 }')
     if [ -z "$ANNOUNCE_IP" ]; then
         "Could not resolve the announce ip for this pod"
         exit 1
