@@ -3,7 +3,7 @@ entries:
   demo:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-08-20T11:36:17.7762409+09:00"
+    created: "2019-08-20T11:39:01.4738364+09:00"
     description: A Helm chart for Kubernetes
     digest: fbda7dd26053e216d25310443ec2766b1dc3b72f4d583d8b45bba72676eb0c6f
     name: demo
@@ -11,9 +11,9 @@ entries:
     - demo/demo-0.1.0.tgz
     version: 0.1.0
   haproxy-redis:
-  - created: "2019-08-20T11:36:17.7782143+09:00"
+  - created: "2019-08-20T11:39:01.4748363+09:00"
     description: A HAProxy based service for non-sentinel aware Redis clients.
-    digest: 8a78121265d8e9b28d985d415510eedcee4f953279c04bfcfe70cd707eab5bec
+    digest: 6ae097cb160fb7d0cfdb46c9189ca2dd1db9d8e30f115de5a4c76da44930ce6f
     icon: http://www.haproxy.org/img/HAProxyCommunityEdition_60px.png
     keywords:
     - haproxy
@@ -23,4 +23,4 @@ entries:
     urls:
     - haproxy-redis/haproxy-redis-0.0.3.tgz
     version: 0.0.3
-generated: "2019-08-20T11:36:17.775241+09:00"
+generated: "2019-08-20T11:39:01.4728362+09:00"
