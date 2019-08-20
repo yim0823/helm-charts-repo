@@ -3,7 +3,7 @@ entries:
   demo:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-08-20T11:39:01.4738364+09:00"
+    created: "2019-08-20T14:39:06.6873276+09:00"
     description: A Helm chart for Kubernetes
     digest: fbda7dd26053e216d25310443ec2766b1dc3b72f4d583d8b45bba72676eb0c6f
     name: demo
@@ -11,7 +11,7 @@ entries:
     - demo/demo-0.1.0.tgz
     version: 0.1.0
   haproxy-redis:
-  - created: "2019-08-20T11:39:01.4748363+09:00"
+  - created: "2019-08-20T14:39:06.6883277+09:00"
     description: A HAProxy based service for non-sentinel aware Redis clients.
     digest: 6ae097cb160fb7d0cfdb46c9189ca2dd1db9d8e30f115de5a4c76da44930ce6f
     icon: http://www.haproxy.org/img/HAProxyCommunityEdition_60px.png
@@ -23,4 +23,30 @@ entries:
     urls:
     - haproxy-redis/haproxy-redis-0.0.3.tgz
     version: 0.0.3
-generated: "2019-08-20T11:39:01.4728362+09:00"
+  redis:
+  - apiVersion: v1
+    appVersion: 5.0.5
+    created: "2019-08-20T14:39:06.691326+09:00"
+    description: Open source, advanced key-value store. It is often referred to as
+      a data structure server since keys can contain strings, hashes, lists, sets
+      and sorted sets.
+    digest: 0929379c1d8420217f28c98b044062e1b4f9e8583464626940709f15f4369dce
+    engine: gotpl
+    home: http://redis.io/
+    icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: redis
+    sources:
+    - https://github.com/bitnami/bitnami-docker-redis
+    urls:
+    - redis/redis-9.0.3.tgz
+    version: 9.0.3
+generated: "2019-08-20T14:39:06.6863276+09:00"

@@ -2,37 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93f197b6-c074-4c89-8a0d-0a79cc69498a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/stable/redis/.helmignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/Chart.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/OWNERS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/ci/default-values.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/ci/dev-values.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/ci/extra-flags-values.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/ci/production-sentinel-values.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/ci/production-values.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/ci/redis-lib-values.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/ci/redisgraph-module-values.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/NOTES.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/_helpers.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/configmap.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/headless-svc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/health-configmap.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/metrics-prometheus.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/metrics-svc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/networkpolicy.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/redis-master-statefulset.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/redis-master-svc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/redis-role.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/redis-rolebinding.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/redis-serviceaccount.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/redis-slave-statefulset.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/redis-slave-svc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/redis-with-sentinel-svc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/templates/secret.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/values-production.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stable/redis/values.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/incubator/index.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/index.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/index.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/.helmignore" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/.helmignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/Chart.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/OWNERS" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/OWNERS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/ci/default-values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/ci/default-values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/ci/dev-values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/ci/dev-values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/ci/extra-flags-values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/ci/extra-flags-values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/ci/production-sentinel-values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/ci/production-sentinel-values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/ci/production-values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/ci/production-values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/ci/redis-lib-values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/ci/redis-lib-values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/ci/redisgraph-module-values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/ci/redisgraph-module-values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/redis-9.0.3.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/redis-9.0.3.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/NOTES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/NOTES.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/_helpers.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/_helpers.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/configmap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/headless-svc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/headless-svc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/health-configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/health-configmap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/metrics-prometheus.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/metrics-prometheus.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/metrics-svc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/metrics-svc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/networkpolicy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/networkpolicy.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/redis-master-statefulset.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/redis-master-statefulset.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/redis-master-svc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/redis-master-svc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/redis-role.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/redis-role.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/redis-rolebinding.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/redis-rolebinding.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/redis-serviceaccount.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/redis-serviceaccount.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/redis-slave-statefulset.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/redis-slave-statefulset.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/redis-slave-svc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/redis-slave-svc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/redis-with-sentinel-svc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/redis-with-sentinel-svc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/templates/secret.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/templates/secret.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/values-production.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/values-production.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stable/redis/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis/values.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,34 +49,15 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incubator/haproxy-redis/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incubator/index.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stable/redis/ci/dev-values.yaml">
+        <entry file="file://$PROJECT_DIR$/incubator/redis/ci/dev-values.yaml">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/stable/index.yaml">
+        <entry file="file://$PROJECT_DIR$/incubator/index.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+            <state relative-caret-position="582">
+              <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -107,11 +91,6 @@
               <item name="helm-charts-repo" type="b2602c69:ProjectViewProjectNode" />
               <item name="helm-charts-repo" type="462c0819:PsiDirectoryNode" />
               <item name="incubator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="helm-charts-repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="helm-charts-repo" type="462c0819:PsiDirectoryNode" />
-              <item name="stable" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -160,7 +139,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566260065535</updated>
-      <workItem from="1566260066883" duration="10351000" />
+      <workItem from="1566260066883" duration="11569000" />
     </task>
     <task id="LOCAL-00001" summary="[생성] haproxy-redis&#10;Redis + Sentinel 구조에 고가용성을 위한 Redis 용 HAProxy 를 https://github.com/prodriguezdefino/charts 에서 가져왔다.">
       <created>1566264606544</created>
@@ -232,11 +211,32 @@
       <option name="project" value="LOCAL" />
       <updated>1566268757466</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="[생성] redis-ha">
+      <created>1566278355134</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1566278355134</updated>
+    </task>
+    <task id="LOCAL-00012" summary="[생성] redis-ha">
+      <created>1566278370402</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1566278370402</updated>
+    </task>
+    <task id="LOCAL-00013" summary="[생성] redis-ha">
+      <created>1566278384707</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1566278384707</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10351000" />
+    <option name="totallyTimeSpent" value="11569000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -278,7 +278,8 @@
     <MESSAGE value="[생성] haproxy-redis&#10;Redis + Sentinel 구조에 고가용성을 위한 Redis 용 HAProxy 를 https://github.com/prodriguezdefino/charts 에서 가져왔다." />
     <MESSAGE value="[제거] haproxy-redis" />
     <MESSAGE value="[생성] haproxy-redis" />
-    <option name="LAST_COMMIT_MESSAGE" value="[생성] haproxy-redis" />
+    <MESSAGE value="[생성] redis-ha" />
+    <option name="LAST_COMMIT_MESSAGE" value="[생성] redis-ha" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/haproxy-redis/README.md">
@@ -354,20 +355,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/incubator/index.yaml">
+    <entry file="file://$PROJECT_DIR$/stable/index.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="318">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stable/redis/ci/dev-values.yaml">
+    <entry file="file://$PROJECT_DIR$/incubator/redis/ci/default-values.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/stable/index.yaml">
+    <entry file="file://$PROJECT_DIR$/incubator/redis/ci/redis-lib-values.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis/ci/production-values.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis/ci/extra-flags-values.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis/ci/redisgraph-module-values.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis/ci/production-sentinel-values.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis/OWNERS">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis/templates/NOTES.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis/ci/dev-values.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/index.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+        <state relative-caret-position="582">
+          <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
         </state>
       </provider>
     </entry>
