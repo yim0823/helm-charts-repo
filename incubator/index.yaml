@@ -3,24 +3,11 @@ entries:
   demo:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-08-20T10:42:59.1453556+09:00"
+    created: "2019-08-20T10:50:54.1511838+09:00"
     description: A Helm chart for Kubernetes
     digest: ca938a403469f0eca6935ef3c0ff7cff32a97dbd330663118095b7b3d84ad5e2
     name: demo
     urls:
     - https://github.com/yim0823/helm-charts-repo/incubator/demo-0.1.0.tgz
     version: 0.1.0
-  haproxy-redis:
-  - created: "2019-08-20T10:42:59.1463558+09:00"
-    description: A HAProxy based service for non-sentinel aware Redis clients.
-    digest: e63eef395e5849350a228d2526878131c3cd90a14644e7837719feed0c2c410a
-    icon: http://www.haproxy.org/img/HAProxyCommunityEdition_60px.png
-    keywords:
-    - haproxy
-    - redis
-    - sentinel
-    name: haproxy-redis
-    urls:
-    - https://github.com/yim0823/helm-charts-repo/incubator/haproxy-redis-0.0.3.tgz
-    version: 0.0.3
-generated: "2019-08-20T10:42:59.1443299+09:00"
+generated: "2019-08-20T10:50:54.1501823+09:00"

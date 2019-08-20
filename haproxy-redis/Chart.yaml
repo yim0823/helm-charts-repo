@@ -1,8 +1,0 @@
-name: haproxy-redis
-keywords:
-- haproxy
-- redis
-- sentinel
-version: 0.0.3
-description: A HAProxy based service for non-sentinel aware Redis clients.
-icon:  http://www.haproxy.org/img/HAProxyCommunityEdition_60px.png
