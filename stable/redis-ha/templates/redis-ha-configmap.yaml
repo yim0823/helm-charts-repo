@@ -117,7 +117,7 @@ data:
 
     mkdir -p /data/conf/
 
-    echo "Initializing config.."
+    echo "Initializing config.. HOSTNAME: $HOSTNAME, MASTER: $MASTER"
     copy_config
 
     ANNOUNCE_IP=$(getent hosts "$SERVICE-announce-$INDEX" | awk '{ print $1 }')
@@ -125,8 +125,10 @@ data:
         "Could not resolve the announce ip for this pod"
         exit 1
     elif [ "$MASTER" ]; then
+        echo"I will cal find_master()"
         find_master
     else
+        echo"I will cal setup_defaults()"
         setup_defaults
     fi
 
