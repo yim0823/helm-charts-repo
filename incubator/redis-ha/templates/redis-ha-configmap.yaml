@@ -9,6 +9,10 @@ metadata:
     app: {{ template "redis-ha.fullname" . }}
 data:
   ping_readiness_local.sh: |
+    REDIS_PORT={{ .Values.redis.port }}
+    HOSTNAME="$(hostname)"
+    set -eu
+
     dir "/data"
     response=$(
       timeout -s 9 $1 \
@@ -16,7 +20,7 @@ data:
   {{- if .Values.auth }}
         -a "$AUTH" --no-auth-warning \
   {{- end }}
-        -h localhost \
+        -h $HOSTNAME \
         -p $REDIS_PORT \
         ping
     )
@@ -26,6 +30,10 @@ data:
     fi
 
   ping_liveness_local.sh: |
+    REDIS_PORT={{ .Values.redis.port }}
+    HOSTNAME="$(hostname)"
+    set -eu
+
     dir "/data"
     response=$(
       timeout -s 9 $1 \
@@ -33,7 +41,7 @@ data:
 {{- if .Values.auth }}
         -a "$AUTH" --no-auth-warning \
 {{- end }}
-        -h localhost \
+        -h $HOSTNAME \
         -p $REDIS_PORT \
         ping
     )
