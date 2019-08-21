@@ -39,14 +39,15 @@ data:
   init.sh: |
     HOSTNAME="$(hostname)"
     INDEX="${HOSTNAME##*-}"
-    MASTER="$(redis-cli -h {{ template "redis-ha.fullname" . }} -p {{ .Values.sentinel.port }} sentinel get-master-addr-by-name {{ .Values.redis.masterGroupName }} | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
+    SERVICE={{ template "redis-ha.fullname" . }}
+    MASTER="$SERVICE-server-0"
     MASTER_GROUP="{{ .Values.redis.masterGroupName }}"
     QUORUM="{{ .Values.sentinel.quorum }}"
     REDIS_CONF=/data/conf/redis.conf
     REDIS_PORT={{ .Values.redis.port }}
     SENTINEL_CONF=/data/conf/sentinel.conf
     SENTINEL_PORT={{ .Values.sentinel.port }}
-    SERVICE={{ template "redis-ha.fullname" . }}
+
     set -eu
 
     sentinel_update() {
@@ -54,14 +55,14 @@ data:
         eval MY_SENTINEL_ID="\${SENTINEL_ID_$INDEX}"
         sed -i "1s/^/sentinel myid $MY_SENTINEL_ID\\n/" "$SENTINEL_CONF"
         sed -i "2s/^/sentinel monitor $MASTER_GROUP $1 $REDIS_PORT $QUORUM \\n/" "$SENTINEL_CONF"
-        echo "sentinel announce-ip $ANNOUNCE_IP" >> $SENTINEL_CONF
+        echo "sentinel announce-ip $HOSTNAME" >> $SENTINEL_CONF
         echo "sentinel announce-port $SENTINEL_PORT" >> $SENTINEL_CONF
     }
 
     redis_update() {
         echo "Updating redis config"
         echo "slaveof $1 $REDIS_PORT" >> "$REDIS_CONF"
-        echo "slave-announce-ip $ANNOUNCE_IP" >> $REDIS_CONF
+        echo "slave-announce-ip $HOSTNAME" >> $REDIS_CONF
         echo "slave-announce-port $REDIS_PORT" >> $REDIS_CONF
     }
 
@@ -72,33 +73,28 @@ data:
 
     setup_defaults() {
         echo "Setting up defaults"
-
-        redis_update "$ANNOUNCE_IP"
-        sentinel_update "$ANNOUNCE_IP"
-        sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
-
-#        if [ "$INDEX" = "0" ]; then
-#            echo "Setting this pod as the default master"
-#            redis_update "$ANNOUNCE_IP"
-#            sentinel_update "$ANNOUNCE_IP"
-#            sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
-#        else
-#            DEFAULT_MASTER="$(getent hosts "$SERVICE-announce-0" | awk '{ print $1 }')"
-#            if [ -z "$DEFAULT_MASTER" ]; then
-#                echo "Unable to resolve host"
-#                exit 1
-#            fi
-#            echo "Setting default slave config.."
-#            redis_update "$DEFAULT_MASTER"
-#            sentinel_update "$DEFAULT_MASTER"
-#        fi
+        if [ "$INDEX" = "0" ]; then
+            echo "Setting this pod as the default master"
+            redis_update "$ANNOUNCE_IP"
+            sentinel_update "$ANNOUNCE_IP"
+            sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
+        else
+            DEFAULT_MASTER="$MASTER"
+            if [ -z "$DEFAULT_MASTER" ]; then
+                echo "Unable to resolve host"
+                exit 1
+            fi
+            echo "Setting default slave config.."
+            redis_update "$DEFAULT_MASTER"
+            sentinel_update "$DEFAULT_MASTER"
+        fi
     }
 
     find_master() {
         echo "Attempting to find master"
         if [ "$(redis-cli -h "$MASTER"{{ if .Values.auth }} -a "$AUTH"{{ end }} ping)" != "PONG" ]; then
            echo "Can't ping master, attempting to force failover"
-           if redis-cli -h "$SERVICE" -p "$SENTINEL_PORT" sentinel failover "$MASTER_GROUP" | grep -q 'NOGOODSLAVE' ; then 
+           if redis-cli -h ":q!" -p "$SENTINEL_PORT" sentinel failover "$MASTER_GROUP" | grep -q 'NOGOODSLAVE' ; then
                setup_defaults
                return 0
            fi
@@ -123,7 +119,6 @@ data:
     echo "Initializing config.."
     copy_config
 
-#    ANNOUNCE_IP=$(getent hosts "$SERVICE-announce-$INDEX" | awk '{ print $1 }')
     ANNOUNCE_IP=$(getent hosts "$SERVICE-announce" | awk '{ print $1 }')
     if [ -z "$ANNOUNCE_IP" ]; then
         "Could not resolve the announce ip for this pod"
