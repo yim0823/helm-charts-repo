@@ -8,7 +8,7 @@ metadata:
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     app: {{ template "redis-ha.fullname" . }}
 data:
-   ping_readiness_local.sh: |
+  ping_readiness_local.sh: |
     REDIS_PORT={{ .Values.redis.port }}
     HOSTNAME="$(hostname)"
     set -eu
@@ -16,9 +16,9 @@ data:
     response=$(
       timeout -s 9 $1 \
       redis-cli \
-    {{- if .Values.auth }}
+{{- if .Values.auth }}
         -a "$AUTH" --no-auth-warning \
-    {{- end }}
+{{- end }}
         -h $HOSTNAME \
         -p $REDIS_PORT \
         ping
