@@ -164,9 +164,27 @@ spec:
               key: {{ .Values.authKey }}
 {{- end }}
         livenessProbe:
-          tcpSocket:
-            port: {{ .Values.redis.port }}
-          initialDelaySeconds: 15
+          failureThreshold: 5
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 5
+          exec:
+            command:
+            - sh
+            - -c
+            - /data/ping_liveness_local.sh 5
+        readinessProbe:
+          failureThreshold: 5
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+          exec:
+            command:
+            - sh
+            - -c
+            - /data/ping_readiness_local.sh 5
         resources:
 {{ toYaml .Values.redis.resources | indent 10 }}
         ports:

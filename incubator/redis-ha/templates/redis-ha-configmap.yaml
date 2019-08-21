@@ -8,6 +8,40 @@ metadata:
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     app: {{ template "redis-ha.fullname" . }}
 data:
+  ping_readiness_local.sh: |
+    dir "/data"
+    response=$(
+      timeout -s 9 $1 \
+      redis-cli \
+  {{- if .Values.auth }}
+        -a "$AUTH" --no-auth-warning \
+  {{- end }}
+        -h localhost \
+        -p $REDIS_PORT \
+        ping
+    )
+    if [ "$response" != "PONG" ]; then
+      echo "$response"
+      exit 1
+    fi
+
+  ping_liveness_local.sh: |
+    dir "/data"
+    response=$(
+      timeout -s 9 $1 \
+      redis-cli \
+{{- if .Values.auth }}
+        -a "$AUTH" --no-auth-warning \
+{{- end }}
+        -h localhost \
+        -p $REDIS_PORT \
+        ping
+    )
+    if [ "$response" != "PONG" ] && [ "$response" != "LOADING Redis is loading the dataset in memory" ]; then
+      echo "$response"
+      exit 1
+    fi
+
   redis.conf: |
 {{- if .Values.redis.customConfig }}
 {{ tpl .Values.redis.customConfig . | indent 4 }}
