@@ -74,7 +74,7 @@ data:
     setup_defaults() {
         echo "[setup_defaults] Setting up defaults, INDEX=$INDEX"
         if [ "$INDEX" = "0" ]; then
-            echo "[setup_defaults] Setting this pod as the default master, HOST=$HOST"
+            echo "[setup_defaults] Setting this pod as the default master"
             redis_update "$HOST"
             sentinel_update "$HOST"
             sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
