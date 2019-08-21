@@ -39,15 +39,15 @@ data:
   init.sh: |
     HOSTNAME="$(hostname)"
     INDEX="${HOSTNAME##*-}"
-    SERVICE={{ template "redis-ha.fullname" . }}
-    MASTER="$SERVICE-server-0"
+    MASTER="$(redis-cli -h {{ template "redis-ha.fullname" . }} -p {{ .Values.sentinel.port }} sentinel get-master-addr-by-name {{ .Values.redis.masterGroupName }} | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
     MASTER_GROUP="{{ .Values.redis.masterGroupName }}"
     QUORUM="{{ .Values.sentinel.quorum }}"
     REDIS_CONF=/data/conf/redis.conf
     REDIS_PORT={{ .Values.redis.port }}
     SENTINEL_CONF=/data/conf/sentinel.conf
     SENTINEL_PORT={{ .Values.sentinel.port }}
-
+    SERVICE={{ template "redis-ha.fullname" . }}
+    DEFAULT_MASTER="$SERVICE-server-0"
     set -eu
 
     sentinel_update() {
@@ -75,11 +75,10 @@ data:
         echo "Setting up defaults"
         if [ "$INDEX" = "0" ]; then
             echo "Setting this pod as the default master"
-            redis_update "$ANNOUNCE_IP"
-            sentinel_update "$ANNOUNCE_IP"
+            redis_update "$HOST"
+            sentinel_update "$HOST"
             sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
         else
-            DEFAULT_MASTER="$MASTER"
             if [ -z "$DEFAULT_MASTER" ]; then
                 echo "Unable to resolve host"
                 exit 1
