@@ -111,6 +111,9 @@ data:
     copy_config() {
         cp /readonly-config/redis.conf "$REDIS_CONF"
         cp /readonly-config/sentinel.conf "$SENTINEL_CONF"
+
+        cp /readonly-config/ping_liveness_local.sh /data/ping_liveness_local.sh
+        cp /readonly-config/ping_readiness_local.sh /data/ping_readiness_local.sh
     }
 
     setup_defaults() {
