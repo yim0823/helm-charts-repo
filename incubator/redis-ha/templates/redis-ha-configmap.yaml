@@ -72,9 +72,9 @@ data:
     }
 
     setup_defaults() {
-        echo "Setting up defaults"
+        echo "[setup_defaults] Setting up defaults, INDEX=$INDEX"
         if [ "$INDEX" = "0" ]; then
-            echo "Setting this pod as the default master"
+            echo "[setup_defaults] Setting this pod as the default master, HOST=$HOST"
             redis_update "$HOST"
             sentinel_update "$HOST"
             sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
@@ -83,14 +83,14 @@ data:
                 echo "Unable to resolve host"
                 exit 1
             fi
-            echo "Setting default slave config.."
+            echo "Setting default slave config.. DEFAULT_MASTER=$DEFAULT_MASTER"
             redis_update "$DEFAULT_MASTER"
             sentinel_update "$DEFAULT_MASTER"
         fi
     }
 
     find_master() {
-        echo "Attempting to find master"
+        echo "[find_master] Attempting to find master, MASTER=$MASTER"
         if [ "$(redis-cli -h "$MASTER"{{ if .Values.auth }} -a "$AUTH"{{ end }} ping)" != "PONG" ]; then
            echo "Can't ping master, attempting to force failover"
            if redis-cli -h ":q!" -p "$SENTINEL_PORT" sentinel failover "$MASTER_GROUP" | grep -q 'NOGOODSLAVE' ; then
@@ -116,15 +116,19 @@ data:
     mkdir -p /data/conf/
 
     echo "Initializing config.."
+    echo "HOSTNAME=$HOSTNAME, INDEX=$INDEX, MASTER=$MASTER, SERVICE=$SERVICE, DEFAULT_MASTER=$DEFAULT_MASTER"
     copy_config
 
     ANNOUNCE_IP=$(getent hosts "$SERVICE-announce" | awk '{ print $1 }')
+    echo "ANNOUNCE_IP=$ANNOUNCE_IP"
     if [ -z "$ANNOUNCE_IP" ]; then
         "Could not resolve the announce ip for this pod"
         exit 1
     elif [ "$MASTER" ]; then
+        echo "I will cal find_master()"
         find_master
     else
+        echo "I will cal setup_defaults()"
         setup_defaults
     fi
 
