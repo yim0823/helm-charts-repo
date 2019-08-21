@@ -17,6 +17,7 @@ spec:
   template:
     metadata:
       annotations:
+        checksum/health: {{ include (print $.Template.BasePath "/health-configmap.yaml") . | sha256sum }}
         checksum/init-config: {{ include (print $.Template.BasePath "/redis-ha-configmap.yaml") . | sha256sum }}
       {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
@@ -173,7 +174,7 @@ spec:
             command:
             - sh
             - -c
-            - /readonly-config/ping_liveness_local.sh 5
+            - /health/ping_liveness_local.sh 5
         readinessProbe:
           failureThreshold: 5
           initialDelaySeconds: 30
@@ -184,15 +185,15 @@ spec:
             command:
             - sh
             - -c
-            - /readonly-config/ping_readiness_local.sh 5
+            - /health/ping_readiness_local.sh 5
         resources:
 {{ toYaml .Values.redis.resources | indent 10 }}
         ports:
         - name: redis
           containerPort: {{ .Values.redis.port }}
         volumeMounts:
-        - name: config
-          mountPath: /readonly-config
+        - name: health
+          mountPath: /health
         - mountPath: /data
           name: data
       - name: sentinel
@@ -262,6 +263,10 @@ spec:
             containerPort: {{ .Values.exporter.port }}
 {{- end }}
       volumes:
+      - name: health
+        configMap:
+          name: {{ template "redis.fullname" . }}-health
+          defaultMode: 0755
       - name: config
         configMap:
           name: {{ template "redis-ha.fullname" . }}-configmap

@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "redis-ha.fullname" . }}-health
+  labels:
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app: {{ template "redis-ha.fullname" . }}
+data:
+  ping_readiness_local.sh: |-
+    REDIS_PORT={{ .Values.redis.port }}
+    HOSTNAME="$(hostname)"
+    set -eu
+
+    response=$(
+      timeout -s 9 $1 \
+      redis-cli \
+{{- if .Values.auth }}
+        -a "$AUTH" --no-auth-warning \
+{{- end }}
+        -h $HOSTNAME \
+        -p $REDIS_PORT \
+        ping
+    )
+    if [ "$response" != "PONG" ]; then
+      echo "$response"
+      exit 1
+    fi
+
+  ping_liveness_local.sh: |-
+    REDIS_PORT={{ .Values.redis.port }}
+    HOSTNAME="$(hostname)"
+    set -eu
+
+    response=$(
+      timeout -s 9 $1 \
+      redis-cli \
+{{- if .Values.auth }}
+        -a "$AUTH" --no-auth-warning \
+{{- end }}
+        -h $HOSTNAME \
+        -p $REDIS_PORT \
+        ping
+    )
+    if [ "$response" != "PONG" ] && [ "$response" != "LOADING Redis is loading the dataset in memory" ]; then
+      echo "$response"
+      exit 1
+    fi
+
