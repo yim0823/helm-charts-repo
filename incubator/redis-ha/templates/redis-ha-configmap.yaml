@@ -13,7 +13,6 @@ data:
     HOSTNAME="$(hostname)"
     set -eu
 
-    dir "/data"
     response=$(
       timeout -s 9 $1 \
       redis-cli \
@@ -34,7 +33,6 @@ data:
     HOSTNAME="$(hostname)"
     set -eu
 
-    dir "/data"
     response=$(
       timeout -s 9 $1 \
       redis-cli \
