@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="93f197b6-c074-4c89-8a0d-0a79cc69498a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +30,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="583">
-                  <caret line="114" column="79" selection-start-line="114" selection-start-column="79" selection-end-line="115" selection-end-column="81" />
+                <state relative-caret-position="589">
+                  <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
                 </state>
               </provider>
             </entry>
@@ -43,8 +43,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="589">
-                  <caret line="186" column="51" selection-start-line="186" selection-start-column="31" selection-end-line="186" selection-end-column="51" />
+                <state relative-caret-position="445">
+                  <caret line="186" column="19" selection-start-line="186" selection-start-column="19" selection-end-line="186" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -87,8 +87,8 @@
         <option value="$PROJECT_DIR$/incubator/redis-ha-original/Chart.yaml" />
         <option value="$PROJECT_DIR$/stable/redis-ha/Chart.yaml" />
         <option value="$PROJECT_DIR$/stable/redis-ha/templates/redis-ha-configmap.yaml" />
-        <option value="$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml" />
         <option value="$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml" />
+        <option value="$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml" />
       </list>
     </option>
   </component>
@@ -179,7 +179,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566260065535</updated>
-      <workItem from="1566260066883" duration="40537000" />
+      <workItem from="1566260066883" duration="41030000" />
     </task>
     <task id="LOCAL-00001" summary="[생성] haproxy-redis&#10;Redis + Sentinel 구조에 고가용성을 위한 Redis 용 HAProxy 를 https://github.com/prodriguezdefino/charts 에서 가져왔다.">
       <created>1566264606544</created>
@@ -447,11 +447,25 @@
       <option name="project" value="LOCAL" />
       <updated>1566372337575</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566372660079</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1566372660079</updated>
+    </task>
+    <task id="LOCAL-00040" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566372877105</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1566372877105</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40537000" />
+    <option name="totallyTimeSpent" value="41030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -705,17 +719,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
+    <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
-          <caret line="186" column="51" selection-start-line="186" selection-start-column="31" selection-end-line="186" selection-end-column="51" />
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml">
+    <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="114" column="79" selection-start-line="114" selection-start-column="79" selection-end-line="115" selection-end-column="81" />
+        <state relative-caret-position="445">
+          <caret line="186" column="19" selection-start-line="186" selection-start-column="19" selection-end-line="186" selection-end-column="19" />
         </state>
       </provider>
     </entry>

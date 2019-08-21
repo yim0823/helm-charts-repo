@@ -173,7 +173,7 @@ spec:
             command:
             - sh
             - -c
-            - /readonly-config/ping_liveness_local.sh 5
+            - /data/ping_liveness_local.sh 5
         readinessProbe:
           failureThreshold: 5
           initialDelaySeconds: 5
@@ -184,7 +184,7 @@ spec:
             command:
             - sh
             - -c
-            - /readonly-config/ping_readiness_local.sh 5
+            - /data/ping_readiness_local.sh 5
         resources:
 {{ toYaml .Values.redis.resources | indent 10 }}
         ports:
