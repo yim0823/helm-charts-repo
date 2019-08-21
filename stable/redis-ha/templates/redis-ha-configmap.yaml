@@ -125,10 +125,10 @@ data:
         "Could not resolve the announce ip for this pod"
         exit 1
     elif [ "$MASTER" ]; then
-        echo"I will cal find_master()"
+        echo "I will cal find_master()"
         find_master
     else
-        echo"I will cal setup_defaults()"
+        echo "I will cal setup_defaults()"
         setup_defaults
     fi
 
