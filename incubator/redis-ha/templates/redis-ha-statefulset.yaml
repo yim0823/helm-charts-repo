@@ -191,6 +191,8 @@ spec:
         - name: redis
           containerPort: {{ .Values.redis.port }}
         volumeMounts:
+        - name: config
+          mountPath: /readonly-config
         - mountPath: /data
           name: data
       - name: sentinel
