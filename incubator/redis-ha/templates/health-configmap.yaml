@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "redis-ha.fullname" . }}-health
+  name: health-configmap
   labels:
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
