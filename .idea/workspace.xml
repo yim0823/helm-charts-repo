@@ -21,8 +21,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/incubator/index.yaml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="513">
-                  <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+                <state relative-caret-position="494">
+                  <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -30,8 +30,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="295">
-                  <caret line="76" column="73" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
+                <state relative-caret-position="515">
+                  <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -65,6 +65,7 @@
       <find>ANNOUNCE_IP</find>
       <find>$MASTER</find>
       <find>setup_defaults</find>
+      <find>HOST</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,31 +116,6 @@
               <item name="incubator" type="462c0819:PsiDirectoryNode" />
               <item name="redis-ha" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="helm-charts-repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="helm-charts-repo" type="462c0819:PsiDirectoryNode" />
-              <item name="incubator" type="462c0819:PsiDirectoryNode" />
-              <item name="redis-ha" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="helm-charts-repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="helm-charts-repo" type="462c0819:PsiDirectoryNode" />
-              <item name="stable" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="helm-charts-repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="helm-charts-repo" type="462c0819:PsiDirectoryNode" />
-              <item name="stable" type="462c0819:PsiDirectoryNode" />
-              <item name="redis-ha" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="helm-charts-repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="helm-charts-repo" type="462c0819:PsiDirectoryNode" />
-              <item name="stable" type="462c0819:PsiDirectoryNode" />
-              <item name="redis-ha" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -189,7 +165,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566260065535</updated>
-      <workItem from="1566260066883" duration="33148000" />
+      <workItem from="1566260066883" duration="33607000" />
     </task>
     <task id="LOCAL-00001" summary="[생성] haproxy-redis&#10;Redis + Sentinel 구조에 고가용성을 위한 Redis 용 HAProxy 를 https://github.com/prodriguezdefino/charts 에서 가져왔다.">
       <created>1566264606544</created>
@@ -415,11 +391,25 @@
       <option name="project" value="LOCAL" />
       <updated>1566364378980</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566364746983</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1566364746983</updated>
+    </task>
+    <task id="LOCAL-00034" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566364957159</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1566364957159</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33148000" />
+    <option name="totallyTimeSpent" value="33607000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -665,13 +655,6 @@
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/values.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/incubator/index.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stable/redis-ha/templates/redis-ha-configmap.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
@@ -679,10 +662,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/index.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="76" column="73" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
+        <state relative-caret-position="515">
+          <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
         </state>
       </provider>
     </entry>
