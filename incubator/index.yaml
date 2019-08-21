@@ -3,7 +3,7 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2019-08-21T12:39:49.0773978+09:00"
+    created: "2019-08-21T12:48:10.5623499+09:00"
     description: Highly available Kubernetes implementation of Redis
     digest: 4d8e9d27490dd1c675f798b3160b6b931f3d2637145e6180ee468724507e1abe
     engine: gotpl
@@ -24,28 +24,4 @@ entries:
     urls:
     - redis-ha/redis-ha-3.7.2.tgz
     version: 3.7.2
-  redis-ha-original:
-  - apiVersion: v1
-    appVersion: 5.0.5
-    created: "2019-08-21T12:39:49.0783985+09:00"
-    description: Highly available Kubernetes implementation of Redis
-    digest: 7bbc630755b52c914c79ab4ddd4c7e80d9f83375dfb2acd165a345dcbe460a08
-    engine: gotpl
-    home: http://redis.io/
-    icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
-    keywords:
-    - redis
-    - keyvalue
-    - database
-    maintainers:
-    - email: salimsalaues@gmail.com
-      name: ssalaues
-    name: redis-ha-original
-    sources:
-    - https://redis.io/download
-    - https://github.com/scality/Zenko/tree/development/1.0/kubernetes/zenko/charts/redis-ha
-    - https://github.com/oliver006/redis_exporter
-    urls:
-    - redis-ha-original/redis-ha-original-3.7.1.tgz
-    version: 3.7.1
-generated: "2019-08-21T12:39:49.0754092+09:00"
+generated: "2019-08-21T12:48:10.5603497+09:00"
