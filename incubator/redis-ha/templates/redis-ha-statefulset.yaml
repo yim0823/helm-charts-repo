@@ -166,7 +166,7 @@ spec:
         livenessProbe:
           failureThreshold: 5
           initialDelaySeconds: 30
-          periodSeconds: 5
+          periodSeconds: 30
           successThreshold: 1
           timeoutSeconds: 5
           exec:
@@ -177,7 +177,7 @@ spec:
         readinessProbe:
           failureThreshold: 5
           initialDelaySeconds: 30
-          periodSeconds: 5
+          periodSeconds: 30
           successThreshold: 1
           timeoutSeconds: 1
           exec:

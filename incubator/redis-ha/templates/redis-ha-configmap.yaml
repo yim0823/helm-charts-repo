@@ -8,7 +8,7 @@ metadata:
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     app: {{ template "redis-ha.fullname" . }}
 data:
-  ping_readiness_local.sh: |
+  ping_readiness_local.sh: |-
     REDIS_PORT={{ .Values.redis.port }}
     HOSTNAME="$(hostname)"
     set -eu
@@ -28,7 +28,7 @@ data:
       exit 1
     fi
 
-  ping_liveness_local.sh: |
+  ping_liveness_local.sh: |-
     REDIS_PORT={{ .Values.redis.port }}
     HOSTNAME="$(hostname)"
     set -eu
