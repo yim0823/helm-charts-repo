@@ -9,7 +9,7 @@ metadata:
     app: {{ template "redis-ha.fullname" . }}
 data:
   ping_readiness_local.sh: |-
-    #!/bin/bash
+    #!/bin/sh
     REDIS_PORT={{ .Values.redis.port }}
     HOSTNAME="$(hostname)"
     set -eu
