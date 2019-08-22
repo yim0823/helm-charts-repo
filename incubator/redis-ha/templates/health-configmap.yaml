@@ -41,7 +41,7 @@ data:
 
     echo "$HOSTNAME\n $info_response"
 
-    if [[ $info_response == *master* ]]; then
+    if [[ "$info_response" =~ .*master.* ]]; then
       echo "master, $info_response"
       exit 0
     else
