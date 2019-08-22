@@ -9,7 +9,6 @@ metadata:
     app: {{ template "redis-ha.fullname" . }}
 data:
   ping_readiness_local.sh: |-
-    #!/bin/sh
     REDIS_PORT={{ .Values.redis.port }}
     HOSTNAME="$(hostname)"
     set -eu
@@ -44,7 +43,7 @@ data:
       echo "master, $info_response"
       exit 0
     else
-      echo "$info_response"
+      echo "slave, $info_response"
       exit 1
     fi
 
