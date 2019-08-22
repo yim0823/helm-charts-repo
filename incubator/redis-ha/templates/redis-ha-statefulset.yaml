@@ -175,6 +175,18 @@ spec:
             - sh
             - -c
             - /health/ping_liveness_local.sh 5
+        readinessProbe:
+          failureThreshold: 5
+          initialDelaySeconds: 60
+
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+          exec:
+            command:
+            - sh
+            - -c
+            - /health/ping_readiness_local.sh 5
         resources:
 {{ toYaml .Values.redis.resources | indent 10 }}
         ports:
@@ -251,17 +263,6 @@ spec:
           - name: exporter-port
             containerPort: {{ .Values.exporter.port }}
 {{- end }}
-      readinessProbe:
-        failureThreshold: 5
-        initialDelaySeconds: 15
-        periodSeconds: 5
-        successThreshold: 1
-        timeoutSeconds: 1
-        exec:
-          command:
-          - sh
-          - -c
-          - /health/ping_readiness_local.sh 5
       volumes:
       - name: health
         configMap:
