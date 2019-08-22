@@ -3,9 +3,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2019-08-22T12:57:58.297963+09:00"
+    created: "2019-08-22T12:59:25.0099473+09:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: e0a870ecf8e0d0ea48301c309c77fb5f68d9de7085abe6e0cf0baec8c9eaa680
+    digest: c7e985fbc88db8e7726d2378ecff94df302491b285c12d6ea684d16b64587ca8
     engine: gotpl
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
@@ -24,4 +24,4 @@ entries:
     urls:
     - redis-ha/redis-ha-3.7.2.tgz
     version: 3.7.2
-generated: "2019-08-22T12:57:58.2889886+09:00"
+generated: "2019-08-22T12:59:25.004945+09:00"

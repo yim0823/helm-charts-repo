@@ -178,7 +178,6 @@ spec:
         readinessProbe:
           failureThreshold: 5
           initialDelaySeconds: 60
-
           periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
