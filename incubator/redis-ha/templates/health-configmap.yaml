@@ -36,10 +36,10 @@ data:
 {{- end }}
         -h $HOSTNAME \
         -p $REDIS_PORT \
-        info replication
+        role
     )
 
-    if [[ "$info_response" == *"role:master"* ]]; then
+    if [[ "$info_response" == *"master"* ]]; then
       echo "master, $info_response"
       exit 0
     else

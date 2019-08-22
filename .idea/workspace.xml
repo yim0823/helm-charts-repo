@@ -40,7 +40,7 @@
             <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="609">
-                  <caret line="41" column="11" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
+                  <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -53,7 +53,7 @@
             <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="665">
-                  <caret line="308" lean-forward="true" selection-start-line="16" selection-end-line="308" />
+                  <caret line="308" lean-forward="true" selection-start-line="308" selection-end-line="308" />
                 </state>
               </provider>
             </entry>
@@ -134,13 +134,6 @@
               <item name="incubator" type="462c0819:PsiDirectoryNode" />
               <item name="redis-ha" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="helm-charts-repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="helm-charts-repo" type="462c0819:PsiDirectoryNode" />
-              <item name="incubator" type="462c0819:PsiDirectoryNode" />
-              <item name="redis-ha" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -190,21 +183,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566260065535</updated>
-      <workItem from="1566260066883" duration="54323000" />
-    </task>
-    <task id="LOCAL-00007" summary="[제거] haproxy-redis">
-      <created>1566267926901</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1566267926902</updated>
-    </task>
-    <task id="LOCAL-00008" summary="[제거] haproxy-redis">
-      <created>1566268671141</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1566268671141</updated>
+      <workItem from="1566260066883" duration="55846000" />
     </task>
     <task id="LOCAL-00009" summary="[생성] haproxy-redis">
       <created>1566268693638</created>
@@ -535,11 +514,25 @@
       <option name="project" value="LOCAL" />
       <updated>1566436161016</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566436984382</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1566436984382</updated>
+    </task>
+    <task id="LOCAL-00057" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566437650810</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1566437650810</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54323000" />
+    <option name="totallyTimeSpent" value="55846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -800,14 +793,14 @@
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
-          <caret line="308" lean-forward="true" selection-start-line="16" selection-end-line="308" />
+          <caret line="308" lean-forward="true" selection-start-line="308" selection-end-line="308" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
-          <caret line="41" column="11" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
+          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
         </state>
       </provider>
     </entry>
