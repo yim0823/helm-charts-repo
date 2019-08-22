@@ -9,8 +9,9 @@ metadata:
     app: {{ template "redis-ha.fullname" . }}
 data:
   ping_readiness_local.sh: |-
-    REDIS_PORT={{ .Values.redis.port }}
     HOSTNAME="$(hostname)"
+    REDIS_PORT="{{ .Values.redis.port }}"
+    MASTER="$(redis-cli -h {{ template "redis-ha.fullname" . }} -p {{ .Values.sentinel.port }} sentinel get-master-addr-by-name {{ .Values.redis.masterGroupName }} | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
     set -eu
 
     ping_response=$(
@@ -46,7 +47,14 @@ data:
         exit 0
         ;;
       *)
-        exit 1
+        echo ":::::::::$MASTER"
+        if [ "$MASTER" ]; then
+          echo "It's a initial step."
+          exit 0
+        else
+          echo "This is a slave because It's not a initial step."
+          exit 1
+        if
         ;;
     esac
 
