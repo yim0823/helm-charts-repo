@@ -166,8 +166,8 @@ spec:
 {{- end }}
         livenessProbe:
           failureThreshold: 5
-          initialDelaySeconds: 30
-          periodSeconds: 30
+          initialDelaySeconds: 15
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
           exec:
@@ -177,8 +177,8 @@ spec:
             - /health/ping_liveness_local.sh 5
         readinessProbe:
           failureThreshold: 5
-          initialDelaySeconds: 30
-          periodSeconds: 30
+          initialDelaySeconds: 15
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
           exec:

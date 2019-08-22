@@ -39,12 +39,7 @@ data:
         info replication
     )
     if [[ "$response" == *"role:master"* ]]; then
-      if [[ "$response" == *"repl_backlog_active:1"* ]]; then
-        echo "$response"
-      else
-        echo "$response"
-        exit 1
-      fi
+      echo "$response"
     else
       echo "$response"
       exit 1
