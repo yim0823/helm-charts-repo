@@ -13,7 +13,7 @@ data:
     HOSTNAME="$(hostname)"
     set -eu
 
-    response=$(
+    ping_response=$(
       timeout -s 9 $1 \
       redis-cli \
 {{- if .Values.auth }}
@@ -23,12 +23,12 @@ data:
         -p $REDIS_PORT \
         ping
     )
-    if [ "$response" != "PONG" ]; then
-      echo "$response"
+    if [ "$ping_response" != "PONG" ]; then
+      echo "$ping_response"
       exit 1
     fi
 
-    response=$(
+    info_response=$(
       timeout -s 9 $1 \
       redis-cli \
 {{- if .Values.auth }}
@@ -38,10 +38,9 @@ data:
         -p $REDIS_PORT \
         info replication
     )
-    echo "$response"
 
-    if [[ "$response" != *"role:master"* ]]; then
-      echo "$response"
+    if [[ ! "$info_response" =~ "role:master" ]]; then
+      echo "$info_response"
       exit 1
     fi
 
