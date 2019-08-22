@@ -52,8 +52,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="410">
-                  <caret line="177" column="23" lean-forward="true" selection-start-line="177" selection-start-column="23" selection-end-line="187" selection-end-column="47" />
+                <state relative-caret-position="487">
+                  <caret line="187" column="29" lean-forward="true" selection-start-line="177" selection-start-column="18" selection-end-line="187" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
@@ -83,6 +83,7 @@
       <find>liveness</find>
       <find>config</find>
       <find>response</find>
+      <find>sentinel</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -183,21 +184,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566260065535</updated>
-      <workItem from="1566260066883" duration="63766000" />
-    </task>
-    <task id="LOCAL-00023" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
-      <created>1566358461018</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1566358461019</updated>
-    </task>
-    <task id="LOCAL-00024" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
-      <created>1566358474342</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1566358474342</updated>
+      <workItem from="1566260066883" duration="65308000" />
     </task>
     <task id="LOCAL-00025" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
       <created>1566358806480</created>
@@ -528,11 +515,25 @@
       <option name="project" value="LOCAL" />
       <updated>1566448532052</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566448887423</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1566448887423</updated>
+    </task>
+    <task id="LOCAL-00073" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566450135820</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1566450135821</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63766000" />
+    <option name="totallyTimeSpent" value="65308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -799,8 +800,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="177" column="23" lean-forward="true" selection-start-line="177" selection-start-column="23" selection-end-line="187" selection-end-column="47" />
+        <state relative-caret-position="487">
+          <caret line="187" column="29" lean-forward="true" selection-start-line="177" selection-start-column="18" selection-end-line="187" selection-end-column="29" />
         </state>
       </provider>
     </entry>
