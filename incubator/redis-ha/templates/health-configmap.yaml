@@ -47,14 +47,17 @@ data:
         exit 0
         ;;
       *)
-        echo ":::::::::$MASTER"
-        if [ -n "$MASTER" ]; then
-          echo "This is a slave because It's not a initial step."
-          exit 1
-        else
-          echo "It's a initial step."
-          exit 0
-        fi
+        echo ":::: SLAVE ::::"
+        case "$info_response" in
+          *-1*)
+            echo "It's a initial step."
+            exit 0
+            ;;
+          *)
+            echo "This is a slave because It's not a initial step."
+            exit 1
+            ;;
+        esac
         ;;
     esac
 
