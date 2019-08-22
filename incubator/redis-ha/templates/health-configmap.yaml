@@ -38,6 +38,8 @@ data:
         -p $REDIS_PORT \
         info replication
     )
+    echo "$response"
+
     if [[ "$response" != *"role:master"* ]]; then
       echo "$response"
       exit 1
