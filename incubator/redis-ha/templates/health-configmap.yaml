@@ -39,15 +39,13 @@ data:
         role
     )
 
-    echo "$HOSTNAME\n $info_response"
+    echo "$info_response"
 
     case "$info_response" in
       *master*)
-        echo "master, $info_response"
         exit 0
         ;;
       *)
-        echo "slave, $info_response"
         exit 1
         ;;
     esac
