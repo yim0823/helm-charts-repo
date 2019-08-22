@@ -56,7 +56,7 @@ data:
           echo "This is a slave because It's not a initial step."
           exit 1
           ;;
-        if
+        fi
     esac
 
   ping_liveness_local.sh: |-
