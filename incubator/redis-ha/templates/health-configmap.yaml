@@ -39,7 +39,10 @@ data:
         info replication
     )
 
-    if [[ ! "$info_response" =~ "role:master" ]]; then
+    if [[ "$info_response" == *"role:master"* ]]; then
+      echo "master, $info_response"
+      exit 0
+    else
       echo "$info_response"
       exit 1
     fi
