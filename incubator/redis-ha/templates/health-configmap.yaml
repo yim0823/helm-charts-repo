@@ -51,11 +51,12 @@ data:
         if [ "$MASTER" ]; then
           echo "It's a initial step."
           exit 0
+          ;;
         else
           echo "This is a slave because It's not a initial step."
           exit 1
+          ;;
         if
-        ;;
     esac
 
   ping_liveness_local.sh: |-
