@@ -41,13 +41,16 @@ data:
 
     echo "$HOSTNAME\n $info_response"
 
-    if [[ "$info_response" =~ .*master.* ]]; then
-      echo "master, $info_response"
-      exit 0
-    else
-      echo "slave, $info_response"
-      exit 1
-    fi
+    case "$info_response" in
+      *master*)
+        echo "master, $info_response"
+        exit 0
+        ;;
+      *)
+        echo "slave, $info_response"
+        exit 1
+        ;;
+    esac
 
   ping_liveness_local.sh: |-
     REDIS_PORT={{ .Values.redis.port }}
