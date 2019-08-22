@@ -177,7 +177,7 @@ spec:
             - /health/ping_liveness_local.sh 5
         readinessProbe:
           failureThreshold: 5
-          initialDelaySeconds: 60
+          initialDelaySeconds:
           periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
