@@ -30,8 +30,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="583">
-                  <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+                <state relative-caret-position="604">
+                  <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
                 </state>
               </provider>
             </entry>
@@ -43,7 +43,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1033">
+                <state relative-caret-position="222">
                   <caret line="219" column="12" lean-forward="true" selection-start-line="219" selection-start-column="12" selection-end-line="219" selection-end-column="45" />
                 </state>
               </provider>
@@ -187,21 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566260065535</updated>
-      <workItem from="1566260066883" duration="66957000" />
-    </task>
-    <task id="LOCAL-00027" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
-      <created>1566359420535</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1566359420535</updated>
-    </task>
-    <task id="LOCAL-00028" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
-      <created>1566360244449</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1566360244449</updated>
+      <workItem from="1566260066883" duration="67425000" />
     </task>
     <task id="LOCAL-00029" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
       <created>1566362480274</created>
@@ -532,11 +518,25 @@
       <option name="project" value="LOCAL" />
       <updated>1566451815350</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566452150943</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1566452150944</updated>
+    </task>
+    <task id="LOCAL-00077" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566452335931</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1566452335931</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66957000" />
+    <option name="totallyTimeSpent" value="67425000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -796,15 +796,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1033">
+        <state relative-caret-position="222">
           <caret line="219" column="12" lean-forward="true" selection-start-line="219" selection-start-column="12" selection-end-line="219" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+        <state relative-caret-position="604">
+          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
         </state>
       </provider>
     </entry>
