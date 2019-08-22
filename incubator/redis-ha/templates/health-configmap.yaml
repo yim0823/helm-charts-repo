@@ -46,7 +46,6 @@ data:
         exit 0
         ;;
       *)
-        echo ":::: SLAVE ::::"
         case "$info_response" in
           *-1*)
             echo "It's a initial step."
@@ -57,6 +56,16 @@ data:
             exit 1
             ;;
         esac
+        ;;
+
+
+        if [ -n "$MASTER" ]; then
+          echo "This is a slave because It's not a initial step."
+          exit 1
+        else
+          echo "It's a initial step."
+          exit 0
+        fi
         ;;
     esac
 
