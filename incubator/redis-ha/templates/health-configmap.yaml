@@ -28,6 +28,28 @@ data:
       exit 1
     fi
 
+    response=$(
+      timeout -s 9 $1 \
+      redis-cli \
+{{- if .Values.auth }}
+        -a "$AUTH" --no-auth-warning \
+{{- end }}
+        -h $HOSTNAME \
+        -p $REDIS_PORT \
+        info replication
+    )
+    if [[ "$response" == *"role:master"* ]]; then
+      if [[ "$response" == *"repl_backlog_active:1"* ]]; then
+        echo "$response"
+      else
+        echo "$response"
+        exit 1
+      fi
+    else
+      echo "$response"
+      exit 1
+    fi
+
   ping_liveness_local.sh: |-
     REDIS_PORT={{ .Values.redis.port }}
     HOSTNAME="$(hostname)"
