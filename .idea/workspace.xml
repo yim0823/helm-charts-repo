@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93f197b6-c074-4c89-8a0d-0a79cc69498a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/incubator/redis-ha/redis-values-dev.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/incubator/redis-ha/redis-values-origin.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/incubator/redis-ha/redis-values-sample.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/incubator/redis-ha/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/incubator/redis-ha/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,52 +18,43 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.47876808">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/incubator/index.yaml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="494">
-                  <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="189">
-                  <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="267">
-                  <caret line="220" column="33" lean-forward="true" selection-start-line="220" selection-start-column="33" selection-end-line="220" selection-end-column="33" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1349">
-                  <caret line="71" selection-start-line="71" selection-end-line="71" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/incubator/index.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/incubator/redis-ha/redis-values-sample.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/incubator/redis-ha/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="791">
+                <caret line="161" selection-start-line="161" selection-end-line="161" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -104,6 +98,7 @@
         <option value="$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml" />
         <option value="$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-statefulset.yaml" />
         <option value="$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml" />
+        <option value="$PROJECT_DIR$/incubator/redis-ha/README.md" />
       </list>
     </option>
   </component>
@@ -148,7 +143,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/incubator" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/incubator/redis-ha" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -161,6 +156,7 @@
       <recent name="C:\Users\taehyoung.yim\IdeaProjects\helm-charts-repo" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\taehyoung.yim\IdeaProjects\helm-charts-repo\incubator\redis-ha" />
       <recent name="C:\Users\taehyoung.yim\IdeaProjects\helm-charts-repo\incubator" />
       <recent name="C:\Users\taehyoung.yim\IdeaProjects\helm-charts-repo\stable" />
     </key>
@@ -187,21 +183,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566260065535</updated>
-      <workItem from="1566260066883" duration="75909000" />
-    </task>
-    <task id="LOCAL-00033" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
-      <created>1566364746983</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1566364746983</updated>
-    </task>
-    <task id="LOCAL-00034" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
-      <created>1566364957159</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1566364957159</updated>
+      <workItem from="1566260066883" duration="88308000" />
     </task>
     <task id="LOCAL-00035" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
       <created>1566365150365</created>
@@ -532,11 +514,25 @@
       <option name="project" value="LOCAL" />
       <updated>1566454235761</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566464902916</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1566464902916</updated>
+    </task>
+    <task id="LOCAL-00083" summary="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)">
+      <created>1566465765885</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1566465765885</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75909000" />
+    <option name="totallyTimeSpent" value="88308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -553,7 +549,7 @@
       <window_info anchor="bottom" id="Docker" weight="0.3298217" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" weight="0.3298217" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.5591572" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.14991896" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3298217" />
@@ -585,9 +581,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="[수정] redis-ha&#10; - 구조 변경, &#10;    각 pod 마다 service 가 붙는 구조 -&gt; 하나의 service 에 pod들이 붙는 구조&#10; - 이유, kube-proxy를 사용하기 위해(without headless)" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/haproxy-redis/templates/stats-service.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/haproxy-redis/templates/master-service.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -658,14 +651,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/ci/production-sentinel-values.yaml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/incubator/redis-ha/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/NOTES.txt">
       <provider selected="true" editor-type-id="text-editor" />
@@ -791,20 +776,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1349">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/values.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/health-configmap.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+        <state relative-caret-position="323">
+          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis-ha/redis-values-sample.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis-ha/templates/redis-ha-configmap.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incubator/redis-ha/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="791">
+            <caret line="161" selection-start-line="161" selection-end-line="161" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

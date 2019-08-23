@@ -1,51 +1,63 @@
-# Redis
+# Redis-Ha
 
-[Redis](http://redis.io/) is an advanced key-value cache and store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets, sorted sets, bitmaps and hyperloglogs.
-
-## TL;DR;
-
-```bash
-$ helm install stable/redis-ha
-```
-
-By default this chart install 3 pods total:
- * one pod containing a redis master and sentinel container (optional prometheus metrics exporter sidecar available)
- * two pods each containing a redis slave and sentinel containers (optional prometheus metrics exporter sidecars available)
+본 차트는 [stable/redis-ha](https://github.com/helm/charts/tree/master/stable/redis-ha) 를 customizing 한 것으로 
+[Redis](http://redis.io/) 를 Kubernetes 환경에서 `Active-Standby 구조`를 구성한다.
+Kube-Proxy 를 통해 requests 를 Master 로 routing 하기 위한 구성이고 sentinel 이 master 의 상태를 감시한다.
+즉, redis master-slave 는 standalone 으로 구성되며 slave 는 master 와 계속 data 에 대해 sync 를 하며 master 와 동일한 data 를 유지한다.  
 
 ## Introduction
 
-This chart bootstraps a [Redis](https://redis.io) highly available master/slave statefulset in a [Kubernetes](http://kubernetes.io) cluster using the Helm package manager.
+- 모든 requests 는 master 에서 처리하고 slave 는 master 의 데이터를 동일하게 갖게하며, master 장애 상태일 때, slave 를 master 로 promoted 하여 failover 를 한다. 장애가 조취된 old master 는 slave 로 demoted 된다.  
+- Kubernetes 환경에서,
+  - kube-proxy 를 활용해 requests 를 write request 는 master 로, read request 는 slaves 로 routing 하는 것이 목적이다.
+  - kube-proxy 로 HAProxy 를 대체하고자 한다.
+    - Kubernetes 환경이 아닌 환경에서 Redis High Availability 를 가져가기 위해 HAProxy 를 중간에 두고 forwarding 를 하는 구조를 많이 사용한다.
+
+## Difference from stable/redis-ha
+
+- stable/redis-ha 는 각 pod 마다 service (redis-ha-announce-server-*) 가 붙고 Headless service 로 묶이는 구성이되는 반면, 
+  - 본 차트는 headless 로 pods 을 proxy 한다.
+- stable/redis-ha 는 redis container 에 대해 livenessProbe 만 존재하고 이 livenessProbe 는 redis-cli ping 명령으로 live 를 확인하는 script 를 실행해 체크하는 로직으로 되어 있는 반면,
+  - 본 차트는 livenessProbe 뿐만 아니라 redis-cli role 명령으로 해당 노드의 redis 상의 역할을 체크해 master 를 찾는 script 를 실행하는 readinessProbe 를 추가했다.
+  - 이 readinessProbe 의 목적은 master 를 찾아, kube-proxy 입장에서는 master 만 서비스 준비가 된 것으로 판단해 master 로만 request 를 forwarding 하는 것이다.
+- stable/redis-ha 는 master 1대, slave n대로 구성하는 반면,
+  - 본 차트는 active-standby 구조로 `master:slave=1:1` 구성으로 `quorum 1`개로 가져간다.
 
 ## Prerequisites
 
 - Kubernetes 1.8+ with Beta APIs enabled
 - PV provisioner support in the underlying infrastructure
 
-## Upgrading the Chart
-
-Please note that there have been a number of changes simplifying the redis management strategy (for better failover and elections) in the 3.x version of this chart. These changes allow the use of official [redis](https://hub.docker.com/_/redis/) images that do not require special RBAC or ServiceAccount roles. As a result when upgrading from version >=2.0.1 to >=3.0.0 of this chart, `Role`, `RoleBinding`, and `ServiceAccount` resources should be deleted manually.
-
-## Installing the Chart
-
-To install the chart
+## Adding the private chart repo
 
 ```bash
-$ helm install stable/redis-ha
+$ helm repo add yim0823-incubator https://raw.githubusercontent.com/yim0823/helm-charts-repo/master/incubator/
+$ helm repo list
+$ helm repo update
 ```
+## Installing the Chart
 
-The command deploys Redis on the Kubernetes cluster in the default configuration. By default this chart install one master pod containing redis master container and sentinel container along with 2 redis slave pods each containing their own sentinel sidecars. The [configuration](#configuration) section lists the parameters that can be configured during installation.
-
-> **Tip**: List all releases using `helm list`
+```bash
+$ helm install yim0823-incubator/redis-ha -f redis-values-sample.yaml --name mec --namespace redis-ha
+```
+> * -f option, value.yaml 파일과 경로 지정
+> * --name option, kubernetes 상에서 해당 chart 로 생성되는 resource 들의 공통 이름
+> * --namespace option, kubernetes 상에서 namespace 지정
 
 ## Uninstalling the Chart
 
 To uninstall/delete the deployment:
 
 ```bash
-$ helm delete <chart-name>
+$ helm delete yim0823-incubator/redis-ha
 ```
 
-The command removes all the Kubernetes components associated with the chart and deletes the release.
+이 차트로 release 된 kubernetes 상에 관련된 모든 components 를 삭제한다.
+
+> **Tip** kubernetes 상에 `mec` 으로 naming 된 모든 components 를 삭제한다.
+> ```bash
+> $ helm delete --purge mec
+> ```
 
 ## Configuration
 
@@ -96,58 +108,56 @@ The following table lists the configurable parameters of the Redis chart and the
 | `sysctlImage.mountHostSys`                 | Mount the host `/sys` folder to `/host-sys`                                                                    | `false`                                              |
 | `schedulerName`                            | Alternate scheduler name                                                                                       | `nil`                                                |
 
-Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
+## Configure the redis-ha (active-standby)
 
-```bash
-$ helm install \
-  --set image=redis \
-  --set tag=5.0.5-alpine \
-    stable/redis-ha
-```
+### 1. Installing the chart
 
-The above command sets the Redis server within `default` namespace.
+![redis-ha_2 install-helm-chart](https://user-images.githubusercontent.com/3222837/63569080-c7e47700-c5b2-11e9-87fc-838fd5fcd5da.png)
 
-Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
+![redis-ha_3 check-headless](https://user-images.githubusercontent.com/3222837/63569089-d599fc80-c5b2-11e9-9ca9-f36ff67929b6.png)
 
-```bash
-$ helm install -f values.yaml stable/redis-ha
-```
+### 2. Check pods and service
 
-> **Tip**: You can use the default [values.yaml](values.yaml)
+![redis-ha_4 check-pods-and-services](https://user-images.githubusercontent.com/3222837/63569134-067a3180-c5b3-11e9-9fd9-a8c44969f79b.png)
 
-## Custom Redis and Sentinel config options
+### 3. Check the role of redis on each node
 
-This chart allows for most redis or sentinel config options to be passed as a key value pair through the `values.yaml` under `redis.config` and `sentinel.config`. See links below for all available options.
+![redis-ha_5-1 check-role-of-redis](https://user-images.githubusercontent.com/3222837/63569163-2c073b00-c5b3-11e9-99a7-ffce1db48e16.png)
 
-[Example redis.conf](http://download.redis.io/redis-stable/redis.conf)
-[Example sentinel.conf](http://download.redis.io/redis-stable/sentinel.conf)
+![redis-ha_5-2 check-role-of-redis](https://user-images.githubusercontent.com/3222837/63569170-31fd1c00-c5b3-11e9-96a7-c14383825652.png)
 
-For example `repl-timeout 60` would be added to the `redis.config` section of the `values.yaml` as:
+## Test Configured redis-ha
+Redis 가 구성된 redis-ha namespace 와 다른 namespace 에 redis-client 를 구성한다.
+(사실, redis-cli 만 설치되어 있음 된다.) 
 
-```yml
-    repl-timeout: "60"
-```
+### 1. Installing the chart for Redis-client
 
-Sentinel options supported must be in the the `sentinel <option> <master-group-name> <value>` format. For example, `sentinel down-after-milliseconds 30000` would be added to the `sentinel.config` section of the `values.yaml` as:
+![redis-ha_6 configure-client](https://user-images.githubusercontent.com/3222837/63569182-404b3800-c5b3-11e9-925b-06e707cf6c41.png)
 
-```yml
-    down-after-milliseconds: 30000
-```
+### 2. Execute commands of redis-cli for getting/setting key:value.
+한 노드에 접속해 앞서 구성한 redis-ha 의 Headless service 를 통해 request 를 보낸다.
 
-If more control is needed from either the redis or sentinel config then an entire config can be defined under `redis.customConfig` or `sentinel.customConfig`. Please note that these values will override any configuration options under their respective section. For example, if you define `sentinel.customConfig` then the `sentinel.config` is ignored.
+![redis-ha_7 execute-client-for-test](https://user-images.githubusercontent.com/3222837/63569377-0c244700-c5b4-11e9-8988-9a07bde1cc81.png)
 
-## Host Kernel Settings
-Redis may require some changes in the kernel of the host machine to work as expected, in particular increasing the `somaxconn` value and disabling transparent huge pages.
-To do so, you can set up a privileged initContainer with the `sysctlImage` config values, for example:
-```
-sysctlImage:
-  enabled: true
-  mountHostSys: true
-  command:
-    - /bin/sh
-    - -c
-    - |-
-      install_packages systemd
-      sysctl -w net.core.somaxconn=10000
-      echo never > /host-sys/kernel/mm/transparent_hugepage/enabled
-```
+## Test failover to configured Redis-ha
+
+### 1. Give the master a sleep and stop the movement for a moment.
+
+![redis-ha_8 execute-sleep-on-master-for-failover-test](https://user-images.githubusercontent.com/3222837/63569428-4b529800-c5b4-11e9-8661-63a0a01a3db8.png)
+
+
+### 2. Check the changed role of each redis node.
+
+![redis-ha_9-1 check-changed-role-from-master-to-slave-for-failover-test](https://user-images.githubusercontent.com/3222837/63569526-a2586d00-c5b4-11e9-93c0-8a0f9febd74b.png)
+
+![redis-ha_9-2 check-changed-role-from-slave-to-master-for-failover-test](https://user-images.githubusercontent.com/3222837/63569575-e3508180-c5b4-11e9-9e5b-489372ac6350.png)
+
+### 3. Check if Redis operates normally. 
+
+![redis-ha_9-3 check-the-behavior-by-execute-client-for-failover-test](https://user-images.githubusercontent.com/3222837/63569584-efd4da00-c5b4-11e9-9942-be482f8894b3.png)
+
+## Test failover-back to configured Redis-ha
+
+![redis-ha_10-1 execute-failover-back-and-check-changed-role-for-failover-test](https://user-images.githubusercontent.com/3222837/63569646-362a3900-c5b5-11e9-91ea-33c390fb636d.png)
+
+![redis-ha_10-2 execute-failover-back-and-check-changed-role-for-failover-test](https://user-images.githubusercontent.com/3222837/63569649-375b6600-c5b5-11e9-89e5-33e15bc13b87.png)
