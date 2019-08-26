@@ -1,0 +1,2 @@
+./conf/* 폴더 하위의 설정 파일들은 '기본 설정 파일'로,
+ - redis-values-*.yaml 파일 작성 시에 '기본 설정 파일'을 참고해서 필요한 key와 value를 redis-values-*.yaml 에 기입하여 helm install 하면 반영이 된다.

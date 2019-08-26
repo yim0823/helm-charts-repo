@@ -2,19 +2,33 @@ replicas: 2
 redis:
   resources:
     requests:
-      memory: 512Mi
+      memory: 8Gi
       cpu: 100m
     limits:
-      memory: 512Mi
+      memory: 8Gi
+  config:
+    tcp-keepalive: 300
+    pidfile: /var/run/redis.pid
+    loglevel: debug
+    logfile: /data/redis.log
+    maxclients: 100000
+    save: "900 1"
+    repl-diskless-sync: "yes"
+    rdbcompression: "yes"
+    rdbchecksum: "yes"
+    min-slaves-to-write: 1
+    min-slaves-max-lag: 5   # Value in seconds
+    maxmemory: "0"       # Max memory to use for each redis instance. Default is unlimited.
+    maxmemory-policy: "volatile-lru"
 
 sentinel:
   quorum: 1
   resources:
     requests:
-      memory: 200Mi
+      memory: 2Gi
       cpu: 100m
     limits:
-      memory: 200Mi
+      memory: 2Gi
 
 hardAntiAffinity: false
 
