@@ -142,7 +142,7 @@ additionalAffinities: {}
 ##           matchLabels:
 ##             app: {{ template "redis-ha.name" . }}
 ##             release: {{ .Release.Name }}
-##         topologyKey: kubernetes.io/hostname
+##         topolog:yKey: kubernetes.io/hostname
 ##     preferredDuringSchedulingIgnoredDuringExecution:
 ##       - weight: 100
 ##         podAffinityTerm:

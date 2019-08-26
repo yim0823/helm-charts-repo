@@ -161,3 +161,24 @@ Redis 가 구성된 redis-ha namespace 와 다른 namespace 에 redis-client 를
 ![redis-ha_10-1 execute-failover-back-and-check-changed-role-for-failover-test](https://user-images.githubusercontent.com/3222837/63569646-362a3900-c5b5-11e9-91ea-33c390fb636d.png)
 
 ![redis-ha_10-2 execute-failover-back-and-check-changed-role-for-failover-test](https://user-images.githubusercontent.com/3222837/63569649-375b6600-c5b5-11e9-89e5-33e15bc13b87.png)
+
+## You can add config's option on redis.conf if you want to add configuration values.
+redis-values-*.yaml 파일의 redis.config 필드에 추가하면 됩니다. 다음과 같이:
+```
+redis:
+  config:
+    tcp-keepalive: 300
+    pidfile: /var/run/redis.pid
+    loglevel: debug
+    logfile: /data/redis.log
+    maxclients: 100000
+    save: "900 1"
+    repl-diskless-sync: "yes"
+    rdbcompression: "yes"
+    rdbchecksum: "yes"
+    min-slaves-to-write: 1
+    min-slaves-max-lag: 5   # Value in seconds
+    maxmemory: "0"       # Max memory to use for each redis instance. Default is unlimited.
+    maxmemory-policy: "volatile-lru"
+```
+
